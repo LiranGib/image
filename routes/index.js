@@ -17,6 +17,7 @@ router.get('/image-add', (req, res, next) => {
   .populate('user')
   .then(imagesFromDB => {
     console.log(imagesFromDB)
+    //User.find({_id:})
     res.render('image-add', {images: imagesFromDB});
   })
 });

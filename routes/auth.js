@@ -92,6 +92,7 @@ router.post("/login", (req, res, next) => {
       }
       if (bcrypt.compareSync(thePassword, user.password)) {
         // Save the login in the session!
+        
         req.session.currentUser = user;
         res.redirect("/main");
       } else {
@@ -118,7 +119,6 @@ router.use((req, res, next) => {
 router.get("/private", (req, res, next) => {
 
   Image.find({user:req.session.currentUser._id})
-    .populate('user')
     .then(images => {
       console.log(images)
     res.render("auth/private", {currentUser:req.session.currentUser, images:images});
