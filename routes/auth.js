@@ -4,6 +4,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require('../models/user');
+const Image = require('../models/image');
 
 
 router.get("/signup", (req, res, next) => {
@@ -115,7 +116,13 @@ router.use((req, res, next) => {
 //     | 
 //     V
 router.get("/private", (req, res, next) => {
-  res.render("auth/private");
+
+  Image.find({user:req.session.currentUser._id})
+    .populate('user')
+    .then(images => {
+      console.log(images)
+    res.render("auth/private", {currentUser:req.session.currentUser, images:images});
+  })
 });
 
 module.exports = router;

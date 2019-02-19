@@ -7,6 +7,7 @@ const imageSchema = new Schema({
   description: String,
   imgName: String,
   imgPath: String,
+  user: { type: Schema.Types.ObjectId, ref: 'User'}
 }, {
   timestamps: { createdAt: "createdAt", updatedAt: "updatedAt" }
 });

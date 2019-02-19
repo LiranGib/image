@@ -1,3 +1,11 @@
-<h1>You are in a private page</h1>
+<h1>You are in a private page {{currentUser.username}} with id  {{currentUser._id}}</h1>
 <img src="https://cdn.instructables.com/FRP/TBMD/HCB8T07B/FRPTBMDHCB8T07B.LARGE.gif">
 <a href="/">Back to home</a>
+
+{{#each images}}
+<ul>
+  <li> {{this.title}}
+    <img src="{{this.imgPath}}" height="100px" width="auto">
+  </li>
+</ul>
+{{/each}}
